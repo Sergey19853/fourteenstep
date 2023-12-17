@@ -6,18 +6,27 @@ public class Main {
 
 		TrainDataProcessing trainDataProcessing = new TrainDataProcessing();
 
-		trainDataProcessing.addTrainInformation(new Train("Барановичи", 10, "1:00"));
-		trainDataProcessing.addTrainInformation(new Train("Полоцк", 9, "2:00"));
-		trainDataProcessing.addTrainInformation(new Train("Бобруйск", 5, "3:00"));
-		trainDataProcessing.addTrainInformation(new Train("Несвиж", 12, "4:00"));
-		trainDataProcessing.addTrainInformation(new Train("Каменец", 1, "5:00"));
+		trainDataProcessing.addTrainInformation("Барановичи", 10, 1, 0);
+		trainDataProcessing.addTrainInformation("Полоцк", 9, 2, 0);
+		trainDataProcessing.addTrainInformation("Бобруйск", 5, 3, 0);
+		trainDataProcessing.addTrainInformation("Несвиж", 12, 4, 0);
+		trainDataProcessing.addTrainInformation("Каменец", 1, 5, 0);
 		
 		trainDataProcessing.sortByTrainNumber();
-		trainDataProcessing.printTrainInformation();
+		
+		for (Train train : trainDataProcessing.getTrainInformation()) {
+			
+			System.out.println(train.toString());
+		}
+		
 		System.out.println();
 		
 		trainDataProcessing.sortByTrainDestination();
-		trainDataProcessing.printTrainInformation();
+		
+		for (Train train : trainDataProcessing.getTrainInformation()) {
+			
+			System.out.println(train.toString());
+		}
 		System.out.println();
 		
 		trainDataProcessing.trainNumberInformation(101);

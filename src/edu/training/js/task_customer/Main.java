@@ -13,11 +13,16 @@ public class Main {
         bank.addCustomer(new Customer(5,"Иванов", "И.", "И.", "Минск ул.Центральная 5", "12345", "104"));
 
         bank.sortCustomerByLastName();
-        bank.printCustomerInformation();
+
+		for (Customer customer : bank.getCustomers()) {
+			System.out.println(customer.toString());
+		}
 
         System.out.println();
         
-        bank.searchByRangeOfCard("10000", "50000");
+		for (Customer customer : bank.searchByRangeOfCard("10000", "40000")) {
+			System.out.println(customer.toString());
+		}
 
 	}
 

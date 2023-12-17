@@ -20,6 +20,18 @@ public class TrainDataProcessing {
 		  return true;
 		  
     }
+    
+    public void addTrainInformation(String trainDestination, int trainNumber, int hour, int minute) {
+    	
+    	trainList.add(new Train(trainDestination, trainNumber, hour, minute));
+        
+    }
+    
+    public List<Train> getTrainInformation() {
+    	
+        return trainList;
+        
+    }
 
     public void sortByTrainNumber() {
     	
@@ -45,44 +57,36 @@ public class TrainDataProcessing {
     	
         for (Train train : trainList) {
         	if (train.getTrainNumber() == trainNumber){
-        		System.out.println(train.toString());
+        		System.out.println(train.toString());       
         		information = true;
         	}
         }
         if (information == false) {
         	System.out.println("No information available");
         }
+		
     }
 
     public void sortByTrainDestination(){
-        boolean flag = true;
 
-        while (flag) {
-        	flag = false;
+        for (int i = 0; i < trainList.size() - 1; i++) {
+            for (int j = 0; j < trainList.size() - i - 1; j++) {
 
-            for (int i = 0, j = 1; i < trainList.size() - 1; i++, j++) {
-                Train t1 = trainList.get(i);
-                Train t2 = trainList.get(j);
-                if (t1.getTrainDestination().compareTo(t2.getTrainDestination()) > 0) {
-                    trainList.set(i, t2);
-                    trainList.set(j, t1);
-                	flag = true;
+                if (trainList.get(j + 1).getTrainDestination().compareTo(trainList.get(j).getTrainDestination()) < 0) {
+                    Train swap = trainList.get(j);
+                    trainList.set(j, trainList.get(j + 1));
+                    trainList.set(j + 1, swap);
                 }
 
-                if (t1.getTrainDestination().equals(t2.getTrainDestination())) {
-                    if (t1.getTrainDepartureTime().compareTo(t2.getTrainDepartureTime()) > 0) {
-                    	trainList.set(i, t2);
-                    	trainList.set(j, t1);
+                if (trainList.get(j + 1).getTrainDestination().equals(trainList.get(j).getTrainDestination())) {
+                    if (trainList.get(j + 1).getTrainDepartureTime().getHour() < trainList.get(j).getTrainDepartureTime().getHour()) {
+                        Train swap = trainList.get(j);
+                        trainList.set(j, trainList.get(j + 1));
+                        trainList.set(j + 1, swap);
                     }
                 }
-            }
-        }
-    }
 
-    public void printTrainInformation() {
-    	
-        for (Train train : trainList) {
-            System.out.println(train.toString());
+            }
         }
         
     }

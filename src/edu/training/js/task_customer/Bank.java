@@ -16,6 +16,12 @@ public class Bank {
     	customerList.add(customer);
     	
     }
+    
+    public List<Customer> getCustomers() {
+    	
+        return customerList;
+        
+    }
 
     public void sortCustomerByLastName() {
     	
@@ -41,7 +47,9 @@ public class Bank {
 
     }
 
-    public void searchByRangeOfCard(String fromCardNumber, String byCardNumber) {
+    public List<Customer> searchByRangeOfCard(String fromCardNumber, String byCardNumber) {
+    	
+    	List<Customer> result = new ArrayList<>();
     	
         for (int i = 0; i < customerList.size(); i++) {
         	
@@ -49,22 +57,14 @@ public class Bank {
 
             if (customer.getCreditCardNumber().compareTo(fromCardNumber) > 0 && customer.getCreditCardNumber().compareTo(byCardNumber) < 0) {
             	
-            	System.out.println(customer.toString());
+            	result.add(customer);
             	
             }
             
         }
+        return result;
         
     }
 
-    public void printCustomerInformation(){
-    	
-        for (Customer customer: customerList){
-        	
-            System.out.println(customer.toString());
-            
-        }
-        
-    }
 
 }

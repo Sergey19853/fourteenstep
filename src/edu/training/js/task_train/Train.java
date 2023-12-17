@@ -6,21 +6,21 @@ public class Train {
 	
 	private String trainDestination;
     private int trainNumber;
-    private String trainDepartureTime;
+    private TrainDepartureTime trainDepartureTime;
 
     public Train() {
 
     }
 
-    public Train(String trainDestination, int trainNumber, String trainDepartureTime) {
-    	
-    	setTrainDestination(trainDestination);
-    	setTrainNumber(trainNumber);
-    	setTrainDepartureTime(trainDepartureTime);
-        
-    }
+    public Train(String trainDestination, int trainNumber, int hour, int minute) {
+	
+		this.trainDestination = trainDestination;
+		this.trainNumber = trainNumber;
+		this.trainDepartureTime = new TrainDepartureTime(hour, minute);;
+		
+	}
 
-    public String getTrainDestination() {
+	public String getTrainDestination() {
 		return trainDestination;
 	}
 
@@ -36,11 +36,12 @@ public class Train {
 		this.trainNumber = trainNumber;
 	}
 
-	public String getTrainDepartureTime() {
+
+	public TrainDepartureTime getTrainDepartureTime() {
 		return trainDepartureTime;
 	}
 
-	public void setTrainDepartureTime(String trainDepartureTime) {
+	public void setTrainDepartureTime(TrainDepartureTime trainDepartureTime) {
 		this.trainDepartureTime = trainDepartureTime;
 	}
 
